@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import {
   BarChart,
   Bar,
@@ -18,8 +18,12 @@ import Loader from './common/Loader';
 import toast from 'react-hot-toast';
 
 const Dashboard = () => {
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     toast.success('Dashboard loaded successfully');
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
   }, []);
   // Quick stats data
   const stats = [
@@ -82,7 +86,7 @@ const Dashboard = () => {
 
   return (
     <div className="flex-1 overflow-auto px-4 py-4">
-      <Loader show={false} message="Loading..." />
+      <Loader show={loading} message="Loading..." />
       {/* Quick Stats */}
       <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mb-4">
         {stats.map(({ title, value, color }, idx) => (
