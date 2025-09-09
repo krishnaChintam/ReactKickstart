@@ -16,7 +16,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import authService from '../api/authService';
 
-const Sidebar = ({ sidebarOpen, toggleSidebar }) => {
+const Sidebar = ({ sidebarOpen = true, toggleSidebar }) => {
   const navigate = useNavigate();
   const [username, setUsername] = useState('User');
 
@@ -143,8 +143,6 @@ Sidebar.propTypes = {
   toggleSidebar: PropTypes.func.isRequired, //It is used to toggle the sidebar on mobile devices
 };
 
-Sidebar.defaultProps = {
-  sidebarOpen: true //It is used to set the default value of the sidebarOpen prop to true
-};
+ 
 
 export default Sidebar;
